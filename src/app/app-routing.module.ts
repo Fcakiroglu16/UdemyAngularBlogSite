@@ -19,7 +19,7 @@ const routes: Routes = [
       },
       {
         //wwww.bıdıbıd.com/hakkimizda
-        path: "hakkimizda",
+        path: "hakkimda",
         component: AboutMeComponent
       },
       {
