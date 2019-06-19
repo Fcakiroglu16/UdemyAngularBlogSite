@@ -10,6 +10,7 @@ import { MainLayoutComponent } from "./layout/main-layout/main-layout.component"
 import { AdminLayoutComponent } from "./layout/admin-layout/admin-layout.component";
 import { MainNavComponent } from './nav/main-nav/main-nav.component';
 import { AdminNavComponent } from './nav/admin-nav/admin-nav.component';
+import { MenuCategoryComponent } from './components/menu-category/menu-category.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AdminNavComponent } from './nav/admin-nav/admin-nav.component';
     MainLayoutComponent,
     AdminLayoutComponent,
     MainNavComponent,
-    AdminNavComponent
+    AdminNavComponent,
+    MenuCategoryComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
