@@ -18,6 +18,10 @@ const routes: Routes = [
         component: HomeComponent
       },
       {
+        path: "sayfa/:page",
+        component: HomeComponent
+      },
+      {
         //wwww.bıdıbıd.com/hakkimizda
         path: "hakkimda",
         component: AboutMeComponent
