@@ -11,6 +11,8 @@ export class ArticlesComponent implements OnInit {
   @Input() articles: Article[];
   @Input() page: number;
   @Input() pageSize: number;
+  default_article: string = "assets/article_empty.jpg";
+
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {}
