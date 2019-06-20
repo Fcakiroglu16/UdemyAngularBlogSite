@@ -1,3 +1,67 @@
-<p>
-  articles works!
-</p>
+<div>
+  <ng-container *ngTemplateOutlet=""></ng-container>
+</div>
+
+<ng-template #emptyTemplate>
+  <div class="alert lart-danger" role="alert">
+    Makale bulunamadı....
+  </div>
+</ng-template>
+
+<ng-template
+  let-id="id"
+  let-commentCount="commentCount"
+  let-viewCount="viewCount"
+  let-categoryName="categoryName"
+  let-publishDate="publishDate"
+  let-contentSummary="contentSummary"
+  let-title="title"
+  let-picture="picture"
+  #horizontalTemplate
+>
+  <div class="card bg-light border-primary">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <img [src]="picture" />
+        </div>
+        <div class="col-md-8">
+          <h5 class="card-title">{{ title }}</h5>
+          <p class="card-text">{{ contentSummary }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer bg-transparent border-primary">
+      <span class="badge badge-pill badge-dark">
+        <i class="fa  fa-calendar"></i> {{ publishDate | date: "dd.MM.yyyy" }}
+      </span>
+      <span class="mr-1"></span>
+      <span class="badge badge-pill badge-success">
+        <i class="fa  fa-folder"></i> {{ categoryName }}
+      </span>
+      <span class="mr-1"></span>
+      <span class="badge badge-pill badge-success">
+        <i class="fa  fa-eye"></i> {{ viewCount }}
+      </span>
+      <span class="mr-1"></span>
+
+      <span class="badge badge-pill badge-primary">
+        <i class="fa  fa-comment"></i> {{ commentCount }}
+      </span>
+
+      <a
+        [routerLink]="['/makale', id]"
+        class="btn btn-primary btn-sm float-right"
+      >
+        devamını oku
+      </a>
+    </div>
+  </div>
+</ng-template>
+
+<pagination-controls
+  responsive="true"
+  (pageChange)="pageChanged($event)"
+  previousLabel="geri"
+  nextLabel="ileri"
+></pagination-controls>
