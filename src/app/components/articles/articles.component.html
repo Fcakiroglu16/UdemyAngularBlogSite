@@ -1,3 +1,27 @@
+<div *ngIf="articleService.loading">
+  <main *ngFor="let item of createRange()" class="page mb-2">
+    <!-- Title -->
+
+    <!-- Content -->
+    <div class="page-content">
+      <!-- Placeholder Content -->
+      <div class="placeholder-content">
+        <div class="placeholder-content_item"></div>
+        <div class="placeholder-content_item"></div>
+        <div class="placeholder-content_item"></div>
+        <div class="placeholder-content_item"></div>
+        <div class="placeholder-content_item"></div>
+        <div class="placeholder-content_item"></div>
+        <div class="placeholder-content_item"></div>
+        <div class="placeholder-content_item"></div>
+        <div class="placeholder-content_item"></div>
+        <div class="placeholder-content_item"></div>
+        <div class="placeholder-content_item"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
 <div *ngIf="articles.length > 0; else emptyTemplate">
   <div
     *ngFor="
@@ -29,7 +53,7 @@
 </div>
 
 <ng-template #emptyTemplate>
-  <div class="alert lart-danger" role="alert">
+  <div *ngIf="!articleService.loading" class="alert lart-danger" role="alert">
     Makale bulunamadı....
   </div>
 </ng-template>
@@ -86,6 +110,7 @@
 </ng-template>
 
 <pagination-controls
+  *ngIf="totalCount > pageSize"
   responsive="true"
   (pageChange)="pageChanged($event)"
   previousLabel="geri"
