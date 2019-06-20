@@ -6,6 +6,7 @@ import { AdminLayoutComponent } from "./layout/admin-layout/admin-layout.compone
 import { HomeComponent } from "./pages/home/home.component";
 import { AboutMeComponent } from "./pages/about-me/about-me.component";
 import { ContactComponent } from "./pages/contact/contact.component";
+import { ArticleComponent } from "./pages/article/article.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
         path: "sayfa/:page",
         component: HomeComponent
       },
+      {
+        path: "makale/:id",
+        component: ArticleComponent
+      },
+
       {
         //wwww.bıdıbıd.com/hakkimizda
         path: "hakkimda",
