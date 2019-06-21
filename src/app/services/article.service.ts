@@ -20,6 +20,19 @@ export class ArticleService {
       })
     );
   }
+  getArticlesWithCategory(categoryId: number, page: number, pageSize: number) {
+    let api = `${
+      this.apiUrl
+    }/GetArticlesWithCategory/${categoryId}/${page}/${pageSize}`;
+
+    return this.httpClient.get<ArticlePg>(api).pipe(
+      tap(x => {
+        this.loading = false;
+        // console.log(this.loading);
+      })
+    );
+  }
+
   getArticle(id: number) {
     let api = `${this.apiUrl}/${id}`;
     return this.httpClient.get<Article>(api).pipe(
