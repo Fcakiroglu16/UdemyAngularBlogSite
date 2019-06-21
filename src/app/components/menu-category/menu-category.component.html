@@ -10,7 +10,9 @@
     <h3 *ngFor="let item of categories">
       <strong>
         <!-- kategori/asp.net/2 -->
-        <a [routerLink]="['/kategori', item.name, item.id]" class="btn btn-link"
+        <a
+          [routerLink]="['/kategori', item.name | urlformat, item.id]"
+          class="btn btn-link"
           ><i class="fa fa-arrow-circle-right"></i> {{ item.name }}</a
         >
       </strong>
