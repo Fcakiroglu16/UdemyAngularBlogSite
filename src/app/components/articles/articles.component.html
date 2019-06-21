@@ -53,7 +53,7 @@
 </div>
 
 <ng-template #emptyTemplate>
-  <div *ngIf="!articleService.loading" class="alert lart-danger" role="alert">
+  <div *ngIf="!articleService.loading" class="alert alert-danger" role="alert">
     Makale bulunamadı....
   </div>
 </ng-template>
@@ -100,7 +100,7 @@
       </span>
 
       <a
-        [routerLink]="['/makale', id]"
+        [routerLink]="['/makale', title | urlformat, id]"
         class="btn btn-primary btn-sm float-right"
       >
         devamını oku
