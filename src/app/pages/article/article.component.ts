@@ -21,6 +21,7 @@ export class ArticleComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.articleService.loading = true;
+
       // www.mysite.com/makale/asp.net core'gelen yenilikler/4
       let id = Number(this.route.snapshot.paramMap.get("id"));
 
@@ -28,6 +29,8 @@ export class ArticleComponent implements OnInit {
         console.log(data);
         this.article = data;
         this.category = data.category;
+
+        this.articleService.ArticleViewCountUp(this.article.id).subscribe();
       });
     });
   }
