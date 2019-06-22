@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { ArticlePg } from "../models/article-pg";
 import { tap } from "rxjs/operators";
 import { Article } from "../models/article";
+import { Archive } from "../models/archive";
 @Injectable({
   providedIn: "root"
 })
@@ -57,5 +58,9 @@ export class ArticleService {
     let api = `${this.apiUrl}/GetArticlesByMostView`;
 
     return this.httpClient.get<Article[]>(api);
+  }
+  getArticlesArchive() {
+    let api = `${this.apiUrl}/GetArticlesArchive`;
+    return this.httpClient.get<Archive[]>(api);
   }
 }
