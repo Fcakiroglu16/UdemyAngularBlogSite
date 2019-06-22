@@ -53,4 +53,9 @@ export class ArticleService {
       })
     );
   }
+  getArticlesByMostView() {
+    let api = `${this.apiUrl}/GetArticlesByMostView`;
+
+    return this.httpClient.get<Article[]>(api);
+  }
 }
