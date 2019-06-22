@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit {
   page: number = 1;
   articles: Article[] = [];
   totalCount: number;
-  pageSize: number = 2;
+  pageSize: number = 5;
   loadingItem: number = 5;
   ajax;
   searchText: string;
