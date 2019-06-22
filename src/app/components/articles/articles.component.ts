@@ -50,6 +50,13 @@ export class ArticlesComponent implements OnInit {
         );
 
         break;
+
+      case "search":
+        let searchText = this.route.snapshot.queryParamMap.get("s");
+        this.router.navigateByUrl(`/arama/sayfa/${this.page}?s=${searchText}`);
+
+        break;
+
       default:
         break;
     }
