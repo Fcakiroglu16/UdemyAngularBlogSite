@@ -1,0 +1,20 @@
+<div class="card border-primary mt-2">
+  <div class="card-header">
+    <strong>En çok okunanlar</strong>
+  </div>
+  <div class="card-body">
+    <div *ngIf="articles.length == 0" class="d-flex justify-content-center">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+    <h3 *ngFor="let item of articles">
+      <a
+        [routerLink]="['/makale', item.title | urlformat, item.id]"
+        class="btn btn-link text-left"
+        ><i class="fa fa-angle-right"></i> {{ item.title }}</a
+      >
+    </h3>
+  </div>
+</div>
