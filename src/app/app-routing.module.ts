@@ -42,6 +42,10 @@ const routes: Routes = [
         component: SearchComponent
       },
       {
+        path: "arsiv/:year/:month",
+        component: ArchiveComponent
+      },
+      {
         path: "arsiv/:year/:month/sayfa/:page",
         component: ArchiveComponent
       },

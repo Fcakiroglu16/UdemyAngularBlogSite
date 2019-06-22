@@ -10,7 +10,9 @@
     </div>
 
     <h3 *ngFor="let item of archives">
-      <a [routerLink]="['/arsiv']" class="btn btn-link text-left"
+      <a
+        [routerLink]="['/arsiv', item.year, item.month]"
+        class="btn btn-link text-left"
         ><i class="fa fa-angle-right"></i> {{ item.year }}
         {{ item.monthName }}({{ item.count }})</a
       >
