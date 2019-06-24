@@ -8,7 +8,7 @@ import { Contact } from "../models/contact";
 export class HelperService {
   constructor(private httpClient: HttpClient) {}
 
-  apiUrl: string = "https://localhost:44356/api/helper";
+  private apiUrl: string = "https://localhost:44356/api/helper";
 
   sendContactEmail(contact: Contact) {
     return this.httpClient.post(`${this.apiUrl}/SendContactEmail`, contact);
