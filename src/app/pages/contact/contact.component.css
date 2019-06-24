@@ -1,0 +1,10 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+.form-container > div {
+  width: 100% !important;
+}
+.form-container button {
+  width: fit-content;
+}

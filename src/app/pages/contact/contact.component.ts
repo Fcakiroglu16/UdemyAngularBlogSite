@@ -29,15 +29,17 @@ export class ContactComponent implements OnInit {
   onsubmit() {
     if (this.contactForm.valid) {
       // {name:"fatih",email:"f@outlook.com"}
-
+      this.loading = true;
       this.helperService.sendContactEmail(this.contactForm.value).subscribe(
         data => {
+          this.loading = false;
           this.success = true;
           this.contactForm.reset();
           this.info =
             "Mesajınız alınmıştır. En kısa sürede dönüş yapılacaktır.";
         },
         error => {
+          this.loading = false;
           this.success = false;
           this.info =
             "Bir hata meydana geldi. Lütfen daha sonra tekrar deneyiniz";

@@ -1,5 +1,46 @@
 <app-page-title [title]="'İletişim'"></app-page-title>
+<form *ngIf="info == null" (ngSubmit)="onsubmit()" [formGroup]="contactForm">
+  <div class="form-container">
+    <mat-form-field>
+      <input matInput placeholder="isminiz" formControlName="name" />
+    </mat-form-field>
 
-<p>
-  contact works!
-</p>
+    <mat-form-field>
+      <input matInput placeholder="email adresiniz" formControlName="email" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="konu" formControlName="subject" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea
+        rows="5"
+        matInput
+        placeholder="mesajınız"
+        formControlName="message"
+      ></textarea>
+    </mat-form-field>
+
+    <button
+      type="submit"
+      [disabled]="loading"
+      color="primary"
+      mat-raised-button
+    >
+      <span
+        *ngIf="loading"
+        class="spinner-border spinner-border-sm"
+        role="status"
+        aria-hidden="true"
+      ></span>
+      Gönder
+    </button>
+  </div>
+</form>
+<div
+  *ngIf="info != null"
+  class="alert"
+  [ngClass]="{ 'alert-primary': success, 'alert-danger': !success }"
+>
+  {{ info }}
+</div>
