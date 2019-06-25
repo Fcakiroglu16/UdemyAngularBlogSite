@@ -2,7 +2,12 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
-import { MatButtonModule, MatInputModule } from "@angular/material";
+import {
+  MatButtonModule,
+  MatInputModule,
+  MatTableModule,
+  MatPaginatorModule
+} from "@angular/material";
 
 @NgModule({
   declarations: [],
@@ -12,7 +17,9 @@ import { MatButtonModule, MatInputModule } from "@angular/material";
     ReactiveFormsModule,
     FormsModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   exports: [
     CommonModule,
@@ -20,7 +27,9 @@ import { MatButtonModule, MatInputModule } from "@angular/material";
     ReactiveFormsModule,
     FormsModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class MaterialModule {}
