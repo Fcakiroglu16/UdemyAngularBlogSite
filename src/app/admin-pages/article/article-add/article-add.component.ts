@@ -9,6 +9,8 @@ import {
 } from "@angular/forms";
 import { CategoryService } from "src/app/services/category.service";
 import { Category } from "src/app/models/category";
+import { MyvalidationService } from "src/app/services/myvalidation.service";
+import { Router } from "@angular/router";
 @Component({
   selector: "app-article-add",
   templateUrl: "./article-add.component.html",
@@ -24,7 +26,9 @@ export class ArticleAddComponent implements OnInit {
   categories: Category[];
   constructor(
     private articleService: ArticleService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    public myvalidationService: MyvalidationService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -33,12 +37,15 @@ export class ArticleAddComponent implements OnInit {
     this.articleForm = new FormGroup({
       title: new FormControl("makale 1", Validators.required),
       contentSummary: new FormControl("makale özet 1", Validators.required),
-      contentMain: new FormControl(""),
+      contentMain: new FormControl("", Validators.required),
       category: new FormControl("", Validators.required),
       picture: new FormControl("")
     });
   }
 
+  get getControls() {
+    return this.articleForm.controls;
+  }
   onSubmit() {
     if (this.articleForm.valid) {
       this.loading = true;
@@ -46,11 +53,12 @@ export class ArticleAddComponent implements OnInit {
         data => {
           this.success = true;
 
-          console.log("makale eklendi");
+          this.router.navigateByUrl("/admin/makale/liste");
         },
         error => {
           this.success = false;
-          this.info = "bir hata meydana geldi:" + error;
+          this.info = "bir hata meydana geldi:";
+          console.log(error);
         }
       );
     }

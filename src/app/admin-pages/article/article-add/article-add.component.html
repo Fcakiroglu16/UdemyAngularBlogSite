@@ -14,6 +14,15 @@
             matInput
             [matAutocomplete]="auto"
           />
+          <mat-error *ngIf="getControls.category.invalid">
+            {{
+              myvalidationService.GetValidationMessages(
+                getControls.category,
+                "kategori"
+              )
+            }}
+          </mat-error>
+
           <mat-autocomplete
             [displayWith]="displayCategoryName"
             #auto="matAutocomplete"
@@ -25,6 +34,14 @@
         </mat-form-field>
         <mat-form-field>
           <input formControlName="title" matInput placeHolder="makale ismi" />
+          <mat-error *ngIf="getControls.title.invalid">
+            {{
+              myvalidationService.GetValidationMessages(
+                getControls.title,
+                "makale ismi"
+              )
+            }}
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field>
@@ -33,6 +50,14 @@
             matInput
             placeHolder="makale içerik özet"
           />
+          <mat-error *ngIf="getControls.contentSummary.invalid">
+            {{
+              myvalidationService.GetValidationMessages(
+                getControls.contentSummary,
+                "makale özet"
+              )
+            }}
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field>
@@ -41,6 +66,14 @@
             matInput
             placeHolder="makale içerik"
           />
+          <mat-error *ngIf="getControls.contentMain.invalid">
+            {{
+              myvalidationService.GetValidationMessages(
+                getControls.contentMain,
+                "makale içerik"
+              )
+            }}
+          </mat-error>
         </mat-form-field>
 
         <button [disabled]="loading" mat-raised-button color="primary">
@@ -54,6 +87,10 @@
         </button>
       </div>
     </form>
+
+    <div role="alert" *ngIf="info != null" class="alert alert-danger mt-3">
+      {{ info }}
+    </div>
   </div>
   <div class="col-md-3">
     <div class="card text-white bg-primary ">
