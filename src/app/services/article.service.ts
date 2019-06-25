@@ -85,4 +85,11 @@ export class ArticleService {
     let api = `${this.apiUrl}/ArticleViewCountUp/${id}`;
     return this.httpClient.get(api);
   }
+
+  saveArticlePicture(image) {
+    return this.httpClient.post<any>(
+      `${this.apiUrl}/SaveArticlePicture`,
+      image
+    );
+  }
 }
