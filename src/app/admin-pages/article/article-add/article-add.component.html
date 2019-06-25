@@ -1,3 +1,23 @@
-<p>
-  article-add works!
-</p>
+<div class="row">
+  <div class="col-md-9"></div>
+  <div class="col-md-3">
+    <div class="card text-white bg-primary ">
+      <div class="card-header">Makale resim</div>
+
+      <div class="card-body">
+        <img
+          [src]="picture || 'assets/article_empty.jpg'"
+          class="img-thumbnail"
+        />
+      </div>
+      <div class="card-footer">
+        <input
+          (change)="upload($event)"
+          type="file"
+          class="form-control"
+          name="image"
+        />
+      </div>
+    </div>
+  </div>
+</div>
