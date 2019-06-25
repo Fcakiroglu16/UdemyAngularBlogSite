@@ -1,3 +1,56 @@
-<p>
-  article-list works!
-</p>
+<div>
+  <table style="width: 100%" mat-table [dataSource]="dataSource">
+    <!-- Position Column -->
+    <ng-container matColumnDef="picture">
+      <th mat-header-cell *matHeaderCellDef>Resim</th>
+      <td mat-cell *matCellDef="let article">
+        <img
+          class="img-thumbnail"
+          style="width: 50px; height: 50px;"
+          [src]="article.picture || 'assets/article_empty.jpg'"
+        />
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Başlık</th>
+      <td mat-cell *matCellDef="let article">
+        {{ article.title }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef>Kategori</th>
+      <td mat-cell *matCellDef="let article">
+        <strong> {{ article.category.name }}</strong>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="commentCount">
+      <th mat-header-cell *matHeaderCellDef>yorum sayısı</th>
+      <td mat-cell *matCellDef="let article">
+        {{ article.commentCount }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="viewCount">
+      <th mat-header-cell *matHeaderCellDef>Gösterim sayısı</th>
+      <td mat-cell *matCellDef="let article">
+        {{ article.viewCount }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="publishDate">
+      <th mat-header-cell *matHeaderCellDef>Tarih</th>
+      <td mat-cell *matCellDef="let article">
+        {{ article.publishDate | date: "dd.MM.yyyy" }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

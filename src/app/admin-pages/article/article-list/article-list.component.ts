@@ -13,12 +13,12 @@ export class ArticleListComponent implements OnInit {
   displayedColumns: string[] = [
     "picture",
     "title",
-    "commentCount",
     "category",
-    "publishDate",
-    "viewCount"
+    "commentCount",
+    "viewCount",
+    "publishDate"
   ];
-  DataSource;
+  dataSource;
   articles: Article[];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -27,9 +27,9 @@ export class ArticleListComponent implements OnInit {
   ngOnInit() {
     this.articleService.getArticlesWithoutPg().subscribe(data => {
       // this.articles = data;
-      this.DataSource = new MatTableDataSource<Article>(data);
+      this.dataSource = new MatTableDataSource<Article>(data);
 
-      this.DataSource.paginator = this.paginator;
+      this.dataSource.paginator = this.paginator;
     });
   }
 }
