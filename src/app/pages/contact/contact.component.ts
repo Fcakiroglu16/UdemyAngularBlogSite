@@ -1,5 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl, Validator, Validators } from "@angular/forms";
+import {
+  FormGroup,
+  FormControl,
+  Validator,
+  Validators,
+  AbstractControl
+} from "@angular/forms";
 import { HelperService } from "src/app/services/helper.service";
 @Component({
   selector: "app-contact",
@@ -24,6 +30,21 @@ export class ContactComponent implements OnInit {
         Validators.minLength(5)
       ])
     });
+  }
+
+  GetValidationMessages(f: AbstractControl, name: string) {
+    if (f.errors) {
+      for (let errroName in f.errors) {
+        if (errroName == "required") return `${name} alanı boş bırakılamaz`;
+        else if (errroName == "email") return `email formatı yanlış`;
+        else if (errroName == "minlength")
+          return `${name} alanız en az 5 karakter olmalıdır.`;
+      }
+    }
+  }
+
+  get getControls() {
+    return this.contactForm.controls;
   }
 
   onsubmit() {

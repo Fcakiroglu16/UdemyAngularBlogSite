@@ -3,13 +3,22 @@
   <div class="form-container">
     <mat-form-field>
       <input matInput placeholder="isminiz" formControlName="name" />
+      <mat-error *ngIf="getControls.name.invalid">{{
+        GetValidationMessages(getControls.name, "isim")
+      }}</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <input matInput placeholder="email adresiniz" formControlName="email" />
+      <mat-error *ngIf="getControls.email.invalid">{{
+        GetValidationMessages(getControls.email, "email")
+      }}</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="konu" formControlName="subject" />
+      <mat-error *ngIf="getControls.subject.invalid">{{
+        GetValidationMessages(getControls.subject, "konu")
+      }}</mat-error>
     </mat-form-field>
 
     <mat-form-field>
@@ -19,6 +28,9 @@
         placeholder="mesajınız"
         formControlName="message"
       ></textarea>
+      <mat-error *ngIf="getControls.message.invalid">{{
+        GetValidationMessages(getControls.message, "mesaj")
+      }}</mat-error>
     </mat-form-field>
 
     <button
