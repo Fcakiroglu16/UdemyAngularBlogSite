@@ -1,5 +1,60 @@
 <div class="row">
-  <div class="col-md-9"></div>
+  <div class="col-md-9">
+    <form
+      *ngIf="info == null"
+      (ngSubmit)="onSubmit()"
+      [formGroup]="articleForm"
+    >
+      <div class="form-container">
+        <mat-form-field>
+          <input
+            type="text"
+            placeholder="kategori seç"
+            formControlName="category"
+            matInput
+            [matAutocomplete]="auto"
+          />
+          <mat-autocomplete
+            [displayWith]="displayCategoryName"
+            #auto="matAutocomplete"
+          >
+            <mat-option *ngFor="let item of categories" [value]="item">
+              {{ item.name }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="title" matInput placeHolder="makale ismi" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            formControlName="contentSummary"
+            matInput
+            placeHolder="makale içerik özet"
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            formControlName="contentMain"
+            matInput
+            placeHolder="makale içerik"
+          />
+        </mat-form-field>
+
+        <button [disabled]="loading" mat-raised-button color="primary">
+          Makale ekle
+          <i
+            *ngIf="loading"
+            class="spinner-border spinner-border-sm"
+            role="status"
+            aria-hidden="true"
+          ></i>
+        </button>
+      </div>
+    </form>
+  </div>
   <div class="col-md-3">
     <div class="card text-white bg-primary ">
       <div class="card-header">Makale resim</div>

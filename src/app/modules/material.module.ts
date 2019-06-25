@@ -6,7 +6,8 @@ import {
   MatButtonModule,
   MatInputModule,
   MatTableModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatAutocompleteModule
 } from "@angular/material";
 
 @NgModule({
@@ -19,7 +20,8 @@ import {
     MatButtonModule,
     MatInputModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatAutocompleteModule
   ],
   exports: [
     CommonModule,
@@ -29,7 +31,8 @@ import {
     MatButtonModule,
     MatInputModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatAutocompleteModule
   ]
 })
 export class MaterialModule {}

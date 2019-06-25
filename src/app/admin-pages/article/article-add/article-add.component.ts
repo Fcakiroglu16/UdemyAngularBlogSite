@@ -33,7 +33,7 @@ export class ArticleAddComponent implements OnInit {
     this.articleForm = new FormGroup({
       title: new FormControl("makale 1", Validators.required),
       contentSummary: new FormControl("makale özet 1", Validators.required),
-      content: new FormControl(""),
+      contentMain: new FormControl(""),
       category: new FormControl("", Validators.required),
       picture: new FormControl("")
     });
@@ -56,6 +56,9 @@ export class ArticleAddComponent implements OnInit {
     }
   }
 
+  displayCategoryName(category) {
+    return category.name;
+  }
   getCategory() {
     this.categoryService.getCategories().subscribe(result => {
       this.categories = result;
