@@ -27,7 +27,6 @@ export class ArticleService {
     return this.httpClient.get<ArticlePg>(api).pipe(
       tap(x => {
         this.loading = false;
-        // console.log(this.loading);
       })
     );
   }
@@ -40,7 +39,6 @@ export class ArticleService {
     return this.httpClient.get<ArticlePg>(api).pipe(
       tap(x => {
         this.loading = false;
-        // console.log(this.loading);
       })
     );
   }
@@ -50,7 +48,6 @@ export class ArticleService {
     return this.httpClient.get<Article>(api).pipe(
       tap(x => {
         this.loading = false;
-        // console.log(this.loading);
       })
     );
   }

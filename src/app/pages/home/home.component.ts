@@ -43,7 +43,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.ajax = this.articleService
         .getArticles(this.page, this.pageSize)
         .subscribe(data => {
-          console.log(data);
           this.articles = data.articles;
           this.totalCount = data.totalCount;
         });
