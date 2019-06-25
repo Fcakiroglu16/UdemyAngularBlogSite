@@ -92,4 +92,8 @@ export class ArticleService {
       image
     );
   }
+
+  addArticle(article: Article) {
+    return this.httpClient.post(this.apiUrl, article);
+  }
 }
