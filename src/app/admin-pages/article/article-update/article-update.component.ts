@@ -15,12 +15,23 @@ import {
   ActivatedRoute
 } from "@angular/router";
 import { Category } from "src/app/models/category";
+import * as DecoupledEditor from "@ckeditor/ckeditor5-build-decoupled-document";
 @Component({
   selector: "app-article-update",
   templateUrl: "./article-update.component.html",
   styleUrls: ["./article-update.component.css"]
 })
 export class ArticleUpdateComponent implements OnInit {
+  public Editor = DecoupledEditor;
+  public onReady(editor) {
+    editor.ui
+      .getEditableElement()
+      .parentElement.insertBefore(
+        editor.ui.view.toolbar.element,
+        editor.ui.getEditableElement()
+      );
+  }
+
   fileData: File = null;
   picture: string = null;
   articleForm: FormGroup;
@@ -38,6 +49,7 @@ export class ArticleUpdateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getCategory();
     this.articleId = Number(this.route.snapshot.paramMap.get("id"));
 
     this.articleService.getArticle(this.articleId).subscribe(data => {
