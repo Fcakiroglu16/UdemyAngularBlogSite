@@ -59,23 +59,13 @@
             }}
           </mat-error>
         </mat-form-field>
-
-        <mat-form-field>
-          <input
+        <div style="border: 1px solid black" class="mb-2">
+          <ckeditor
+            (ready)="onReady($event)"
             formControlName="contentMain"
-            matInput
-            placeHolder="makale içerik"
-          />
-          <mat-error *ngIf="getControls.contentMain.invalid">
-            {{
-              myvalidationService.GetValidationMessages(
-                getControls.contentMain,
-                "makale içerik"
-              )
-            }}
-          </mat-error>
-        </mat-form-field>
-
+            [editor]="Editor"
+          ></ckeditor>
+        </div>
         <button [disabled]="loading" mat-raised-button color="primary">
           Makale ekle
           <i
