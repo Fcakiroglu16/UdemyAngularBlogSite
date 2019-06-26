@@ -16,6 +16,7 @@ import { ArticleComponent } from "./article/article.component";
 import { CategoryArticlesComponent } from "./category-articles/category-articles.component";
 import { SearchComponent } from "./search/search.component";
 import { ArchiveComponent } from "./archive/archive.component";
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ArchiveComponent } from "./archive/archive.component";
     ArticleComponent,
     CategoryArticlesComponent,
     SearchComponent,
-    ArchiveComponent
+    ArchiveComponent,
+    AdminLoginComponent
   ],
   imports: [
     CommonModule,
