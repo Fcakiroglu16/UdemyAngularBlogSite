@@ -40,6 +40,7 @@ export class ArticleUpdateComponent implements OnInit {
   info: string;
   categories: Category[];
   articleId: number;
+  contentLoading: boolean = true;
   constructor(
     private articleService: ArticleService,
     private categoryService: CategoryService,
@@ -59,6 +60,7 @@ export class ArticleUpdateComponent implements OnInit {
       this.getControls.contentSummary.setValue(data.contentSummary);
       this.getControls.contentMain.setValue(data.contentMain);
       this.getControls.category.setValue(data.category);
+      this.contentLoading = false;
     });
 
     this.articleForm = new FormGroup({

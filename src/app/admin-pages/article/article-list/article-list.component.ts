@@ -27,8 +27,20 @@ export class ArticleListComponent implements OnInit {
 
   ngOnInit() {
     this.articleService.getArticlesWithoutPg().subscribe(data => {
-      // this.articles = data;
+      this.articles = data;
       this.dataSource = new MatTableDataSource<Article>(data);
+
+      this.dataSource.paginator = this.paginator;
+    });
+  }
+
+  deleteArticle(id) {
+    this.articleService.deleteArticle(id).subscribe(data => {
+      let article = this.articles.filter(x => x.id == id)[0];
+      let index = this.articles.indexOf(article);
+
+      this.articles.splice(index, 1);
+      this.dataSource = new MatTableDataSource<Article>(this.articles);
 
       this.dataSource.paginator = this.paginator;
     });

@@ -1,83 +1,111 @@
 <div class="row">
   <div class="col-md-9">
-    <form
-      *ngIf="info == null"
-      (ngSubmit)="onSubmit()"
-      [formGroup]="articleForm"
-    >
-      <div class="form-container">
-        <mat-form-field>
-          <input
-            type="text"
-            placeholder="kategori seç"
-            formControlName="category"
-            matInput
-            [matAutocomplete]="auto"
-          />
-          <mat-error *ngIf="getControls.category.invalid">
-            {{
-              myvalidationService.GetValidationMessages(
-                getControls.category,
-                "kategori"
-              )
-            }}
-          </mat-error>
+    <div *ngIf="!contentLoading">
+      <form
+        *ngIf="info == null"
+        (ngSubmit)="onSubmit()"
+        [formGroup]="articleForm"
+      >
+        <div class="form-container">
+          <mat-form-field>
+            <input
+              type="text"
+              placeholder="kategori seç"
+              formControlName="category"
+              matInput
+              [matAutocomplete]="auto"
+            />
+            <mat-error *ngIf="getControls.category.invalid">
+              {{
+                myvalidationService.GetValidationMessages(
+                  getControls.category,
+                  "kategori"
+                )
+              }}
+            </mat-error>
 
-          <mat-autocomplete
-            [displayWith]="displayCategoryName"
-            #auto="matAutocomplete"
-          >
-            <mat-option *ngFor="let item of categories" [value]="item">
-              {{ item.name }}- {{ item.id }}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
-        <mat-form-field>
-          <input formControlName="title" matInput placeHolder="makale ismi" />
-          <mat-error *ngIf="getControls.title.invalid">
-            {{
-              myvalidationService.GetValidationMessages(
-                getControls.title,
-                "makale ismi"
-              )
-            }}
-          </mat-error>
-        </mat-form-field>
+            <mat-autocomplete
+              [displayWith]="displayCategoryName"
+              #auto="matAutocomplete"
+            >
+              <mat-option *ngFor="let item of categories" [value]="item">
+                {{ item.name }}- {{ item.id }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="title" matInput placeHolder="makale ismi" />
+            <mat-error *ngIf="getControls.title.invalid">
+              {{
+                myvalidationService.GetValidationMessages(
+                  getControls.title,
+                  "makale ismi"
+                )
+              }}
+            </mat-error>
+          </mat-form-field>
 
-        <mat-form-field>
-          <input
-            formControlName="contentSummary"
-            matInput
-            placeHolder="makale içerik özet"
-          />
-          <mat-error *ngIf="getControls.contentSummary.invalid">
-            {{
-              myvalidationService.GetValidationMessages(
-                getControls.contentSummary,
-                "makale özet"
-              )
-            }}
-          </mat-error>
-        </mat-form-field>
-        <div style="border: 1px solid black" class="mb-2">
-          <ckeditor
-            (ready)="onReady($event)"
-            formControlName="contentMain"
-            [editor]="Editor"
-          ></ckeditor>
+          <mat-form-field>
+            <input
+              formControlName="contentSummary"
+              matInput
+              placeHolder="makale içerik özet"
+            />
+            <mat-error *ngIf="getControls.contentSummary.invalid">
+              {{
+                myvalidationService.GetValidationMessages(
+                  getControls.contentSummary,
+                  "makale özet"
+                )
+              }}
+            </mat-error>
+          </mat-form-field>
+          <div style="border: 1px solid black" class="mb-2">
+            <ckeditor
+              (ready)="onReady($event)"
+              formControlName="contentMain"
+              [editor]="Editor"
+            ></ckeditor>
+          </div>
+          <button [disabled]="loading" mat-raised-button color="primary">
+            Makale güncelle
+            <i
+              *ngIf="loading"
+              class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+            ></i>
+          </button>
         </div>
-        <button [disabled]="loading" mat-raised-button color="primary">
-          Makale güncelle
-          <i
-            *ngIf="loading"
-            class="spinner-border spinner-border-sm"
-            role="status"
-            aria-hidden="true"
-          ></i>
-        </button>
+      </form>
+    </div>
+    <div *ngIf="contentLoading" class="text-center">
+      <h3>Makale yükleniyor....</h3>
+      <div class="spinner-grow text-primary" role="status">
+        <span class="sr-only">Loading...</span>
       </div>
-    </form>
-
+      <div class="spinner-grow text-secondary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-success" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-danger" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-warning" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-info" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-light" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-dark" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
     <div role="alert" *ngIf="info != null" class="alert alert-danger mt-3">
       {{ info }}
     </div>

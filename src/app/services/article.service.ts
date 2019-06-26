@@ -99,4 +99,8 @@ export class ArticleService {
   updateArticle(id: number, article: Article) {
     return this.httpClient.put(`${this.apiUrl}/${id}`, article);
   }
+
+  deleteArticle(id: number) {
+    return this.httpClient.delete(`${this.apiUrl}/${id}`);
+  }
 }
