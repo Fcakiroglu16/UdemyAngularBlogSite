@@ -16,7 +16,8 @@ export class ArticleListComponent implements OnInit {
     "category",
     "commentCount",
     "viewCount",
-    "publishDate"
+    "publishDate",
+    "action"
   ];
   dataSource;
   articles: Article[];

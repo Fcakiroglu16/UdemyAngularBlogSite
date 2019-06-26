@@ -45,6 +45,19 @@
       </td>
     </ng-container>
 
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>işlemler</th>
+      <td mat-cell *matCellDef="let article">
+        <button
+          [routerLink]="['/admin/makale/guncelle', article.id]"
+          mat-raised-button
+          color="primary"
+        >
+          güncelle
+        </button>
+      </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
