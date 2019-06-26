@@ -42,8 +42,53 @@ export class ArticleUpdateComponent implements OnInit {
 
     this.articleService.getArticle(this.articleId).subscribe(data => {
       this.picture = data.picture;
+
+      this.getControls.title.setValue(data.title);
+      this.getControls.contentSummary.setValue(data.contentSummary);
+      this.getControls.contentMain.setValue(data.contentMain);
+      this.getControls.category.setValue(data.category);
+    });
+
+    this.articleForm = new FormGroup({
+      title: new FormControl("", Validators.required),
+      contentSummary: new FormControl("", Validators.required),
+      contentMain: new FormControl("", Validators.required),
+      category: new FormControl("", Validators.required),
+      picture: new FormControl("")
     });
   }
+  displayCategoryName(category) {
+    return category.name;
+  }
+  getCategory() {
+    this.categoryService.getCategories().subscribe(result => {
+      this.categories = result;
+    });
+  }
+  get getControls() {
+    return this.articleForm.controls;
+  }
+
+  onSubmit() {
+    if (this.articleForm.valid) {
+      this.loading = true;
+      this.articleService
+        .updateArticle(this.articleId, this.articleForm.value)
+        .subscribe(
+          data => {
+            this.success = true;
+            // alert("geldi");
+            this.router.navigateByUrl("/admin/makale/liste");
+          },
+          error => {
+            this.success = false;
+            this.info = "bir hata meydana geldi:";
+            console.log(error);
+          }
+        );
+    }
+  }
+
   upload(files) {
     this.fileData = files.target.files[0];
 
