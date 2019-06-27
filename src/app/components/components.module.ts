@@ -12,6 +12,7 @@ import { MenuArticleMostViewComponent } from "./menu-article-most-view/menu-arti
 import { MenuArchiveComponent } from "./menu-archive/menu-archive.component";
 import { AddCommentComponent } from "./add-comment/add-comment.component";
 import { MaterialModule } from "../modules/material.module";
+import { ListCommentsComponent } from './list-comments/list-comments.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MaterialModule } from "../modules/material.module";
     UrlformatPipe,
     MenuArticleMostViewComponent,
     MenuArchiveComponent,
-    AddCommentComponent
+    AddCommentComponent,
+    ListCommentsComponent
   ],
   imports: [CommonModule, RouterModule, NgxPaginationModule, MaterialModule],
   exports: [
