@@ -16,6 +16,7 @@ import { ArticleUpdateComponent } from "./admin-pages/article/article-update/art
 import { ArticleAddComponent } from "./admin-pages/article/article-add/article-add.component";
 import { AdminArticleComponent } from "./admin-pages/article/article/article.component";
 import { AdminLoginComponent } from "./pages/admin-login/admin-login.component";
+import { AuthGuardService } from "./services/auth-guard.service";
 const routes: Routes = [
   {
     //wwww.bıdıbıd.com/
@@ -75,6 +76,7 @@ const routes: Routes = [
     //wwww.bıdıbıd.com/admin
     path: "admin",
     component: AdminLayoutComponent,
+    canActivate: [AuthGuardService],
     children: [
       // ..../admin/
       {
