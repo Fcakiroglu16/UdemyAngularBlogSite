@@ -16,8 +16,8 @@ import { ArticleComponent } from "./article/article.component";
 import { CategoryArticlesComponent } from "./category-articles/category-articles.component";
 import { SearchComponent } from "./search/search.component";
 import { ArchiveComponent } from "./archive/archive.component";
-import { AdminLoginComponent } from './admin-login/admin-login.component';
-
+import { AdminLoginComponent } from "./admin-login/admin-login.component";
+import { FooterNavComponent } from "../nav/footer-nav/footer-nav.component";
 @NgModule({
   declarations: [
     MainLayoutComponent,
@@ -29,7 +29,8 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     CategoryArticlesComponent,
     SearchComponent,
     ArchiveComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    FooterNavComponent
   ],
   imports: [
     CommonModule,
