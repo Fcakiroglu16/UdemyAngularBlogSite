@@ -1,13 +1,3 @@
-.form-container {
-  display: flex;
-  flex-direction: column;
-}
-.form-container > div {
-  width: 100% !important;
-}
-.form-container button {
-  width: fit-content;
-}
 :host ::ng-deep .ck-editor__editable_inline {
   min-height: 500px;
 }

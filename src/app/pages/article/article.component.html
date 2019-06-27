@@ -27,32 +27,34 @@
     </div>
   </div>
 </div>
+<div id="articleWrapper" *ngIf="!articleService.loading">
+  <div class="card border-primary">
+    <div class="card-header">
+      <h3>{{ article.title }}</h3>
 
-<div class="card border-primary" *ngIf="!articleService.loading">
-  <div class="card-header">
-    <h3>{{ article.title }}</h3>
+      <div>
+        <span class="badge badge-pill badge-dark">
+          <i class="fa  fa-calendar"></i>
+          {{ article.publishDate | date: "dd.MM.yyyy" }}
+        </span>
+        <span class="mr-1"></span>
+        <span class="badge badge-pill badge-success">
+          <i class="fa  fa-folder"></i> {{ category.name }}
+        </span>
+        <span class="mr-1"></span>
+        <span class="badge badge-pill badge-success">
+          <i class="fa  fa-eye"></i> {{ article.viewCount }}
+        </span>
+        <span class="mr-1"></span>
 
-    <div>
-      <span class="badge badge-pill badge-dark">
-        <i class="fa  fa-calendar"></i>
-        {{ article.publishDate | date: "dd.MM.yyyy" }}
-      </span>
-      <span class="mr-1"></span>
-      <span class="badge badge-pill badge-success">
-        <i class="fa  fa-folder"></i> {{ category.name }}
-      </span>
-      <span class="mr-1"></span>
-      <span class="badge badge-pill badge-success">
-        <i class="fa  fa-eye"></i> {{ article.viewCount }}
-      </span>
-      <span class="mr-1"></span>
-
-      <span class="badge badge-pill badge-primary">
-        <i class="fa  fa-comment"></i> {{ article.commentCount }}
-      </span>
+        <span class="badge badge-pill badge-primary">
+          <i class="fa  fa-comment"></i> {{ article.commentCount }}
+        </span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="ck ck-content" [innerHTML]="article.contentMain"></div>
     </div>
   </div>
-  <div class="card-body">
-    <div class="ck ck-content" [innerHTML]="article.contentMain"></div>
-  </div>
+  <app-add-comment></app-add-comment>
 </div>

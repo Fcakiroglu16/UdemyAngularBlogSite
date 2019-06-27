@@ -10,7 +10,7 @@ export class CommentService {
   constructor(private httpClient: HttpClient) {}
 
   private apiUrl: string = "https://localhost:44356/api/comments";
-  loading: boolean = false;
+  loading: boolean;
   addComment(comment: Comment) {
     this.loading = true;
     return this.httpClient.post(this.apiUrl, comment).pipe(

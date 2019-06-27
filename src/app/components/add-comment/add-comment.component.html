@@ -1,3 +1,55 @@
-<p>
-  add-comment works!
-</p>
+<div class="card bg-light mt-3">
+  <div class="card-body">
+    <div
+      *ngIf="info != null"
+      class="alert"
+      [ngClass]="{ 'alert-primary': success, 'alert-danger': !success }"
+    >
+      {{ info }}
+    </div>
+
+    <form
+      *ngIf="info == null"
+      (ngSubmit)="onSubmit()"
+      [formGroup]="commentForm"
+    >
+      <div class="form-container">
+        <mat-form-field>
+          <input formControlName="name" matInput placeholder="isim..." />
+          <mat-error *ngIf="getControls.name.invalid">{{
+            myvalidationService.GetValidationMessages(getControls.name, "isim")
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <textarea
+            rows="5"
+            formControlName="contentMain"
+            matInput
+            placeholder="yorumunuz..."
+          ></textarea>
+          <mat-error *ngIf="getControls.contentMain.invalid">{{
+            myvalidationService.GetValidationMessages(
+              getControls.contentMain,
+              "yorum"
+            )
+          }}</mat-error>
+        </mat-form-field>
+
+        <button
+          [disabled]="commentService.loading"
+          mat-raised-button
+          color="primary"
+        >
+          yorum ekle
+          <i
+            *ngIf="commentService.loading"
+            class="spinner-border spinner-border-sm"
+            role="status"
+            aria-hidden="true"
+          ></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

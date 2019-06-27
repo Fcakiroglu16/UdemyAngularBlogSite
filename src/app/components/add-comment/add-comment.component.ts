@@ -15,7 +15,7 @@ export class AddCommentComponent implements OnInit {
   info: string;
 
   constructor(
-    private commentService: CommentService,
+    public commentService: CommentService,
     private route: ActivatedRoute,
     public myvalidationService: MyvalidationService
   ) {}

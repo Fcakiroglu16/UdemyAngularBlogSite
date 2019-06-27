@@ -10,7 +10,8 @@ import { ArticlesComponent } from "./articles/articles.component";
 import { UrlformatPipe } from "../pipes/urlformat.pipe";
 import { MenuArticleMostViewComponent } from "./menu-article-most-view/menu-article-most-view.component";
 import { MenuArchiveComponent } from "./menu-archive/menu-archive.component";
-import { AddCommentComponent } from './add-comment/add-comment.component';
+import { AddCommentComponent } from "./add-comment/add-comment.component";
+import { MaterialModule } from "../modules/material.module";
 
 @NgModule({
   declarations: [
@@ -22,14 +23,15 @@ import { AddCommentComponent } from './add-comment/add-comment.component';
     MenuArchiveComponent,
     AddCommentComponent
   ],
-  imports: [CommonModule, RouterModule, NgxPaginationModule],
+  imports: [CommonModule, RouterModule, NgxPaginationModule, MaterialModule],
   exports: [
     MenuCategoryComponent,
     PageTitleComponent,
     ArticlesComponent,
     UrlformatPipe,
     MenuArticleMostViewComponent,
-    MenuArchiveComponent
+    MenuArchiveComponent,
+    AddCommentComponent
   ]
 })
 export class ComponentsModule {}
