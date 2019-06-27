@@ -9,7 +9,7 @@ import { Comment } from "src/app/models/comment";
   styleUrls: ["./list-comments.component.css"]
 })
 export class ListCommentsComponent implements OnInit {
-  comments: Comment[];
+  comments: Comment[] = [];
   loading: boolean;
 
   constructor(

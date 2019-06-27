@@ -1,3 +1,17 @@
-<p>
-  list-comments works!
-</p>
+<h3>Yorumlar({{ comments.length }})</h3>
+<hr />
+<div *ngIf="loading" class="d-flex justify-content-center">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<div id="commentsWrapper" *ngIf="!loading">
+  <div *ngFor="let item of comments" class="card bg-light mt-3">
+    <div class="card-header">
+      <strong><i class="fa fa-user-circle"></i> {{ item.name }}</strong>
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{ item.contentMain }}</p>
+    </div>
+  </div>
+</div>
