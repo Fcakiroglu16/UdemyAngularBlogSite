@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class AuthService {
   constructor(private httpClient: HttpClient) {}
@@ -11,7 +11,7 @@ export class AuthService {
     let adminUser = { email: email, password: password };
 
     return this.httpClient.post<any>(
-      "https://localhost:44356/api/Auth/IsAuthenticated",
+      'https://localhost:44356/api/Auth/IsAuthenticated',
       adminUser
     );
   }

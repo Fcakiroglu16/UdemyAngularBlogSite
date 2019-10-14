@@ -26,4 +26,18 @@ export class ListCommentsComponent implements OnInit {
       this.loading = false;
     });
   }
+
+  public  reLoad()
+  {
+   this.loading = true;
+   let id = Number(this.route.snapshot.paramMap.get('id'));
+
+   this.commentService.commentList(id).subscribe(data => {
+     this.comments = data;
+     this.loading = false;
+   });
+
+
+
+  }
 }

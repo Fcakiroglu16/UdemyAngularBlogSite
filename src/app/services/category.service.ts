@@ -1,13 +1,13 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
-import { HttpClient } from "@angular/common/http";
-import { Category } from "../models/category";
+import { HttpClient } from '@angular/common/http';
+import { Category } from '../models/category';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class CategoryService {
-  private apiUrl: string = "https://localhost:44356/api/categories";
+  private apiUrl: string = 'https://localhost:44356/api/categories';
   constructor(private httpCleint: HttpClient) {}
 
   public getCategories() {
@@ -15,6 +15,7 @@ export class CategoryService {
   }
 
   public getCategorybyId(id: number) {
+   
     let url = `${this.apiUrl}/${id}`;
     return this.httpCleint.get<Category>(url);
   }

@@ -35,7 +35,7 @@
       <div>
         <span class="badge badge-pill badge-dark">
           <i class="fa  fa-calendar"></i>
-          {{ article.publishDate | date: "dd.MM.yyyy" }}
+          {{ article.publishDate | date: 'dd.MM.yyyy' }}
         </span>
         <span class="mr-1"></span>
         <span class="badge badge-pill badge-success">
@@ -56,6 +56,6 @@
       <div class="ck ck-content" [innerHTML]="article.contentMain"></div>
     </div>
   </div>
-  <app-add-comment></app-add-comment>
+  <app-add-comment (Reload)="ReloadCommnetList()"></app-add-comment>
   <app-list-comments></app-list-comments>
 </div>

@@ -1,16 +1,16 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { ArticlePg } from "../models/article-pg";
-import { tap } from "rxjs/operators";
-import { Article } from "../models/article";
-import { Archive } from "../models/archive";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ArticlePg } from '../models/article-pg';
+import { tap } from 'rxjs/operators';
+import { Article } from '../models/article';
+import { Archive } from '../models/archive';
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class ArticleService {
   constructor(private httpClient: HttpClient) {}
   public loading: boolean = true;
-  private apiUrl: string = "https://localhost:44356/api/articles";
+  private apiUrl: string = 'https://localhost:44356/api/articles';
 
   getArticlesWithoutPg() {
     return this.httpClient.get<Article[]>(this.apiUrl);
@@ -22,6 +22,7 @@ export class ArticleService {
     return this.httpClient.get<ArticlePg>(api).pipe(
       tap(x => {
         this.loading = false;
+        console.log(x.articles);
       })
     );
   }
@@ -36,9 +37,7 @@ export class ArticleService {
   }
 
   getArticlesWithCategory(categoryId: number, page: number, pageSize: number) {
-    let api = `${
-      this.apiUrl
-    }/GetArticlesWithCategory/${categoryId}/${page}/${pageSize}`;
+    let api = `${this.apiUrl}/GetArticlesWithCategory/${categoryId}/${page}/${pageSize}`;
 
     return this.httpClient.get<ArticlePg>(api).pipe(
       tap(x => {
@@ -71,9 +70,7 @@ export class ArticleService {
     page: number,
     pageSize: number
   ) {
-    let api = `${
-      this.apiUrl
-    }/GetArticleArchiveList/${year}/${month}/${page}/${pageSize}`;
+    let api = `${this.apiUrl}/GetArticleArchiveList/${year}/${month}/${page}/${pageSize}`;
 
     return this.httpClient.get<ArticlePg>(api).pipe(
       tap(x => {
