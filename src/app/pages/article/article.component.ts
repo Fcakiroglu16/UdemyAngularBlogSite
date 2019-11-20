@@ -16,7 +16,7 @@ export class ArticleComponent implements OnInit {
   @ViewChild(ListCommentsComponent, { static: false })
   listComponent: ListCommentsComponent;
   constructor(
-    private articleService: ArticleService,
+    public articleService: ArticleService,
     private route: ActivatedRoute
   ) {}
 

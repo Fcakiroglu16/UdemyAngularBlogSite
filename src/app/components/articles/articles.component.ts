@@ -19,7 +19,7 @@ export class ArticlesComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private articleService: ArticleService
+    public articleService: ArticleService
   ) {}
 
   createRange() {
