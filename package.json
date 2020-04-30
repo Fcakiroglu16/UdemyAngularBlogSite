@@ -26,7 +26,7 @@
     "@ckeditor/ckeditor5-build-decoupled-document": "^12.2.0",
     "bootstrap": "^4.3.1",
     "hammerjs": "^2.0.8",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ngx-pagination": "^4.0.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
