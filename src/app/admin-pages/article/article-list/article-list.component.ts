@@ -1,13 +1,15 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { DataSource } from "@angular/cdk/table";
 import { Article } from "src/app/models/article";
-import { MatPaginator, MatTableDataSource } from "@angular/material";
+import { MatPaginator } from "@angular/material/paginator";
+import { MatTableDataSource } from "@angular/material/table";
+
 import { ArticleService } from "src/app/services/article.service";
 
 @Component({
   selector: "app-article-list",
   templateUrl: "./article-list.component.html",
-  styleUrls: ["./article-list.component.css"]
+  styleUrls: ["./article-list.component.css"],
 })
 export class ArticleListComponent implements OnInit {
   displayedColumns: string[] = [
@@ -17,7 +19,7 @@ export class ArticleListComponent implements OnInit {
     "commentCount",
     "viewCount",
     "publishDate",
-    "action"
+    "action",
   ];
   dataSource;
   articles: Article[];
@@ -26,7 +28,7 @@ export class ArticleListComponent implements OnInit {
   constructor(private articleService: ArticleService) {}
 
   ngOnInit() {
-    this.articleService.getArticlesWithoutPg().subscribe(data => {
+    this.articleService.getArticlesWithoutPg().subscribe((data) => {
       this.articles = data;
       this.dataSource = new MatTableDataSource<Article>(data);
 
@@ -35,8 +37,8 @@ export class ArticleListComponent implements OnInit {
   }
 
   deleteArticle(id) {
-    this.articleService.deleteArticle(id).subscribe(data => {
-      let article = this.articles.filter(x => x.id == id)[0];
+    this.articleService.deleteArticle(id).subscribe((data) => {
+      let article = this.articles.filter((x) => x.id == id)[0];
       let index = this.articles.indexOf(article);
 
       this.articles.splice(index, 1);

@@ -13,7 +13,7 @@ import { ListCommentsComponent } from 'src/app/components/list-comments/list-com
 export class ArticleComponent implements OnInit {
   article: Article;
   category: Category;
-  @ViewChild(ListCommentsComponent, { static: false })
+  @ViewChild(ListCommentsComponent)
   listComponent: ListCommentsComponent;
   constructor(
     public articleService: ArticleService,
